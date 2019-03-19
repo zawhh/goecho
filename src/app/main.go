@@ -12,7 +12,6 @@ func main() {
 	// Echo instance
 	e := echo.New()
 
-	e.Validator = &model.CustomValidator{Validator: validator.New()}
 
 	// Middleware
 	e.Use(middleware.Recover())
@@ -20,6 +19,7 @@ func main() {
 	//e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 	//	Format: "method=${method}, uri=${uri}, status=${status}\n",
 	//}))
+	e.Validator = &model.CustomValidator{Validator: validator.New()}
 
 	// Routes
 	e.GET("/", controller.Hello)
